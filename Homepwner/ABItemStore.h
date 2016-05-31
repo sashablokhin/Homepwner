@@ -18,5 +18,6 @@
 
 - (ABTableItem *)createItem;
 - (void)removeItem:(ABTableItem *)item;
+- (void)moveItemAtIndex:(int)from toIndex:(int)to;
 
 @end

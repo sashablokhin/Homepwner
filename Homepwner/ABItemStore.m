@@ -44,4 +44,15 @@
     [_allItems removeObjectIdenticalTo:item]; // removeObject сравнивает поля, removeObjectIdenticalTo - удаляет именно нужный объект
 }
 
+- (void)moveItemAtIndex:(int)from toIndex:(int)to {
+    if (from == to) {
+        return;
+    }
+    
+    ABTableItem *item = [_allItems objectAtIndex:from];
+    
+    [_allItems removeObjectAtIndex:from];
+    [_allItems insertObject:item atIndex:to];
+}
+
 @end
