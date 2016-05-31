@@ -8,14 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TableItem : NSObject
+@interface ABTableItem : NSObject
 
-@property (nonatomic, strong) TableItem *containedItem;
-@property (nonatomic, weak) TableItem *container;
+@property (nonatomic, strong) ABTableItem *containedItem;
+@property (nonatomic, weak) ABTableItem *container;
 
 @property (nonatomic, strong) NSString *itemName;
 @property (nonatomic, strong) NSString *serialNumber;
 @property (nonatomic, assign) int valueInDollars;
 @property (nonatomic, strong, readonly) NSDate *dateCreated;
+
++ (ABTableItem *)randomItem;
+
+- (id)initWithItemName:(NSString *)name valueInDollars:(int)value serialNumber:(NSString *)sNumber;
 
 @end
