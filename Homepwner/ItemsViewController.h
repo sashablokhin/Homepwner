@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ItemsViewController : UITableViewController
+- (IBAction)toggleEditMode:(id)sender;
+- (IBAction)addNewItem:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UIView *headerView;
+
+- (UIView *)headerView;
 
 @end
