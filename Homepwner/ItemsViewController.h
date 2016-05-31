@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ItemsViewController : UITableViewController
+
 - (IBAction)toggleEditMode:(id)sender;
 - (IBAction)addNewItem:(id)sender;
 

@@ -16,15 +16,15 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2bh-Os-mcz">
-                    <rect key="frame" x="17" y="32" width="70" height="38"/>
-                    <state key="normal" title="Добавить"/>
+                    <rect key="frame" x="38" y="36" width="30" height="30"/>
+                    <state key="normal" title="Add"/>
                     <connections>
                         <action selector="addNewItem:" destination="-1" eventType="touchUpInside" id="eMG-AE-ys8"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFH-t9-DVt">
-                    <rect key="frame" x="193" y="32" width="110" height="38"/>
-                    <state key="normal" title="Редактировать"/>
+                    <rect key="frame" x="233" y="36" width="63" height="30"/>
+                    <state key="normal" title="Edit"/>
                     <connections>
                         <action selector="toggleEditMode:" destination="-1" eventType="touchUpInside" id="7kT-XV-XbF"/>
                     </connections>

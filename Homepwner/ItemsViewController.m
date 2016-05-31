@@ -70,11 +70,34 @@
     return _headerView;
 }
 
+#pragma mark - Actions
 
 - (IBAction)toggleEditMode:(id)sender {
-    NSLog(@"!!!");
+    if ([self isEditing]) {
+        [sender setTitle:@"Edit" forState:UIControlStateNormal];
+        [self setEditing:false animated:true];
+    } else {
+        [sender setTitle:@"Done" forState:UIControlStateNormal];
+        [self setEditing:true animated:true];
+    }
 }
 
 - (IBAction)addNewItem:(id)sender {
+    
+    ABTableItem *newItem = [[ABItemStore sharedInstance] createItem];
+    
+    int lastRow = [[[ABItemStore sharedInstance] allItems] indexOfObject:newItem];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
+    
+    [[self tableView] insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
 }
 @end
+
+
+
+
+
+
+
+
+
