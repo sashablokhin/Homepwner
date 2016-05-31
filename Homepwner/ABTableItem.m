@@ -50,4 +50,8 @@
     return self;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@ - %d $ - %@", _itemName, _valueInDollars, _serialNumber];
+}
+
 @end
