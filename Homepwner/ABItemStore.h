@@ -17,5 +17,6 @@
 + (ABItemStore *)sharedInstance;
 
 - (ABTableItem *)createItem;
+- (void)removeItem:(ABTableItem *)item;
 
 @end

@@ -40,4 +40,8 @@
     return item;
 }
 
+- (void)removeItem:(ABTableItem *)item {
+    [_allItems removeObjectIdenticalTo:item]; // removeObject сравнивает поля, removeObjectIdenticalTo - удаляет именно нужный объект
+}
+
 @end
