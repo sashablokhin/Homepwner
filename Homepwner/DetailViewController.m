@@ -42,6 +42,16 @@
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.view endEditing:true];
+    
+    item.itemName = _nameField.text;
+    item.serialNumber = _serialField.text;
+    item.valueInDollars = _valueField.text.intValue;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
