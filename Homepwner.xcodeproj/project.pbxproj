@@ -66,6 +66,7 @@
 		AB0F79B11CFDC77300D41069 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AB0F79B41D005C7900D41069 /* DetailViewController.xib */,
 				AB0F79AF1CFDBF4F00D41069 /* HeaderView.xib */,
 			);
 			name = Views;
@@ -96,7 +97,6 @@
 				AB0F79A61CFD9C5F00D41069 /* ItemsViewController.m */,
 				AB0F79B21D005C7900D41069 /* DetailViewController.h */,
 				AB0F79B31D005C7900D41069 /* DetailViewController.m */,
-				AB0F79B41D005C7900D41069 /* DetailViewController.xib */,
 				AB0F79B11CFDC77300D41069 /* Views */,
 				AB0F79AE1CFDA20800D41069 /* Models */,
 				AB30E7CC1CFD95A200C985B2 /* Main.storyboard */,

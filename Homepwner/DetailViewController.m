@@ -25,6 +25,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    
+    self.navigationItem.title = item.itemName;
+    
+    [self configureNumberKeyboard];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -55,6 +59,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)configureNumberKeyboard {
+    UIBarButtonItem *numberPadDoneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.valueField action:@selector(resignFirstResponder)];
+    
+    UIToolbar *numberPadAccessoryInputView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44.0f)];
+    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    numberPadAccessoryInputView.items = @[space, numberPadDoneButton];
+    
+    self.valueField.inputAccessoryView = numberPadAccessoryInputView;
 }
 
 /*

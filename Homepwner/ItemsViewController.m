@@ -24,6 +24,15 @@
     for (int i = 0; i < 5; i++) {
         [[ABItemStore sharedInstance] createItem];
     }
+    
+    self.navigationItem.title = @"Homepwner";
+    
+    UIBarButtonItem *addBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                  target:self
+                                                                                  action:@selector(addNewItem:)];
+    
+    self.navigationItem.rightBarButtonItem = addBarButton;
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -89,14 +98,14 @@
 
 
 #pragma mark - UITableViewDelegate
-
+/*
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     return [self headerView];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return [[self headerView] bounds].size.height;
-}
+}*/
 
 
 - (UIView *)headerView {
