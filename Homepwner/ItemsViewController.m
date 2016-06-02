@@ -19,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    
     for (int i = 0; i < 5; i++) {
         [[ABItemStore sharedInstance] createItem];
     }
@@ -64,6 +66,20 @@
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     [[ABItemStore sharedInstance] moveItemAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
+}
+
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"Remove";
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DetailViewController *detailViewController = [[DetailViewController alloc] init];
+    
+    ABTableItem *item = [[[ABItemStore sharedInstance] allItems] objectAtIndex:indexPath.row];
+    detailViewController.item = item;
+    
+    [self.navigationController pushViewController:detailViewController animated:true];
 }
 
 
