@@ -10,7 +10,7 @@
 
 @class ABTableItem;
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (nonatomic, strong) ABTableItem *item;
 

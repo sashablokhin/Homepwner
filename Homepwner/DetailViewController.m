@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *serialField;
 @property (weak, nonatomic) IBOutlet UITextField *valueField;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
+- (IBAction)takePicture:(id)sender;
 
 @end
 
@@ -72,6 +75,18 @@
     self.valueField.inputAccessoryView = numberPadAccessoryInputView;
 }
 
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    self.imageView.image = image;
+    
+    [self dismissViewControllerAnimated:true completion:nil];
+    
+}
+
+
 /*
 #pragma mark - Navigation
 
@@ -81,5 +96,19 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)takePicture:(id)sender {
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    } else {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    imagePicker.delegate = self;
+    
+    [self presentViewController:imagePicker animated:true completion:nil];
+}
 
 @end
