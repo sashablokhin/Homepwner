@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "ABTableItem.h"
+#import "ABImageStore.h"
 
 @interface DetailViewController ()
 
@@ -47,6 +48,12 @@
     
     _dateLabel.text = [dateFormatter stringFromDate:item.dateCreated];
     
+    if (item.imageKey) {
+        UIImage *imageToDisplay = [[ABImageStore sharedInstance] imageForKey:item.imageKey];
+        _imageView.image = imageToDisplay;
+    } else {
+        _imageView.image = nil;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -66,7 +73,9 @@
 
 
 - (void)configureNumberKeyboard {
-    UIBarButtonItem *numberPadDoneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.valueField action:@selector(resignFirstResponder)];
+    UIBarButtonItem *numberPadDoneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                         target:self.valueField
+                                                                                         action:@selector(resignFirstResponder)];
     
     UIToolbar *numberPadAccessoryInputView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44.0f)];
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
@@ -75,15 +84,32 @@
     self.valueField.inputAccessoryView = numberPadAccessoryInputView;
 }
 
+- (NSString *)makeUniqueIDString {
+    CFUUIDRef newUniqueID = CFUUIDCreate(kCFAllocatorDefault);
+    CFStringRef newUniqueIDString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueID);
+    
+    NSString *string = (__bridge NSString *)newUniqueIDString;
+    
+    // Объекты Core Foundation нужно релизить
+    CFRelease(newUniqueIDString);
+    CFRelease(newUniqueID);
+    
+    return string;
+}
+
 #pragma mark - UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    if (item.imageKey) {
+        [[ABImageStore sharedInstance] deleteImageForKey:item.imageKey];
+    }
+    
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     
-    self.imageView.image = image;
+    [item setImageKey:[self makeUniqueIDString]];
+    [[ABImageStore sharedInstance] setImage:image forKey:item.imageKey];
     
     [self dismissViewControllerAnimated:true completion:nil];
-    
 }
 
 
