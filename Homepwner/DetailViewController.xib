@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController">
             <connections>
                 <outlet property="dateLabel" destination="slt-rb-rJe" id="bUS-u2-JP6"/>
+                <outlet property="deleteImageButton" destination="jh3-Md-LXU" id="eRd-Lh-98O"/>
                 <outlet property="imageView" destination="gVw-zD-Zvl" id="7Ek-eA-FLB"/>
                 <outlet property="nameField" destination="KzU-La-bQa" id="Lg4-Wy-ghT"/>
                 <outlet property="serialField" destination="aGQ-lv-nIL" id="QTl-xK-4fU"/>
@@ -62,6 +63,13 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gVw-zD-Zvl">
                     <rect key="frame" x="40" y="258" width="240" height="240"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jh3-Md-LXU">
+                    <rect key="frame" x="243" y="271" width="25" height="25"/>
+                    <state key="normal" image="cancel"/>
+                    <connections>
+                        <action selector="deleteImageButtonPressed:" destination="-1" eventType="touchUpInside" id="9mE-Ds-62m"/>
+                    </connections>
+                </button>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bvY-aG-lBd">
                     <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                     <items>
@@ -77,4 +85,7 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="cancel" width="25" height="25"/>
+    </resources>
 </document>

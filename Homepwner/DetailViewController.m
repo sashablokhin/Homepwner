@@ -17,8 +17,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *valueField;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIButton *deleteImageButton;
 
 - (IBAction)takePicture:(id)sender;
+- (IBAction)deleteImageButtonPressed:(id)sender;
+
 
 @end
 
@@ -28,7 +31,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    
+    _nameField.delegate = self;
+    _serialField.delegate = self;
     
     self.navigationItem.title = item.itemName;
     
@@ -51,8 +58,10 @@
     if (item.imageKey) {
         UIImage *imageToDisplay = [[ABImageStore sharedInstance] imageForKey:item.imageKey];
         _imageView.image = imageToDisplay;
+        _deleteImageButton.hidden = false;
     } else {
         _imageView.image = nil;
+        _deleteImageButton.hidden = true;
     }
 }
 
@@ -104,12 +113,25 @@
         [[ABImageStore sharedInstance] deleteImageForKey:item.imageKey];
     }
     
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    //UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
     [item setImageKey:[self makeUniqueIDString]];
     [[ABImageStore sharedInstance] setImage:image forKey:item.imageKey];
     
     [self dismissViewControllerAnimated:true completion:nil];
+}
+
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return true;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:true];
 }
 
 
@@ -125,6 +147,7 @@
 
 - (IBAction)takePicture:(id)sender {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.allowsEditing = true;
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -135,6 +158,15 @@
     imagePicker.delegate = self;
     
     [self presentViewController:imagePicker animated:true completion:nil];
+}
+
+- (IBAction)deleteImageButtonPressed:(id)sender {
+    if (item.imageKey) {
+        [[ABImageStore sharedInstance] deleteImageForKey:item.imageKey];
+        item.imageKey = nil;
+        _imageView.image = nil;
+        _deleteImageButton.hidden = true;
+    }
 }
 
 @end
