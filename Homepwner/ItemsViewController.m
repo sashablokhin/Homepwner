@@ -142,7 +142,12 @@
     DetailViewController *detailViewController = [[DetailViewController alloc] initForNewItem:true];
     [detailViewController setItem:newItem];
     
+    [detailViewController setDismissBlock:^{
+        [self.tableView reloadData];
+    }];
+    
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+    navController.modalPresentationStyle = UIModalPresentationFormSheet;
     
     [self presentViewController:navController animated:true completion:nil];
 }

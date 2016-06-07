@@ -13,6 +13,7 @@
 @interface DetailViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UIPopoverPresentationControllerDelegate>
 
 @property (nonatomic, strong) ABTableItem *item;
+@property (nonatomic, copy) void (^dismissBlock)(void);
 
 - (id)initForNewItem:(BOOL)isNew;
 

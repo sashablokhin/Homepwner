@@ -28,7 +28,7 @@
 
 @implementation DetailViewController
 
-@synthesize item;
+@synthesize item, dismissBlock;
 
 - (id)initForNewItem:(BOOL)isNew {
     self = [super initWithNibName:@"DetailViewController" bundle:nil];
@@ -103,12 +103,12 @@
 
 
 - (void)save:(id)sender {
-    [[self presentingViewController] dismissViewControllerAnimated:true completion:nil];
+    [[self presentingViewController] dismissViewControllerAnimated:true completion:dismissBlock];
 }
 
 - (void)cancel:(id)sender {
     [[ABItemStore sharedInstance] removeItem:item];
-    [[self presentingViewController] dismissViewControllerAnimated:true completion:nil];
+    [[self presentingViewController] dismissViewControllerAnimated:true completion:dismissBlock];
 }
 
 
