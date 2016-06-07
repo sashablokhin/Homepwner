@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "ABTableItem.h"
 #import "ABImageStore.h"
+#import "ABItemStore.h"
 
 @interface DetailViewController ()
 
@@ -29,6 +30,22 @@
 
 @synthesize item;
 
+- (id)initForNewItem:(BOOL)isNew {
+    self = [super initWithNibName:@"DetailViewController" bundle:nil];
+    
+    if (self) {
+        if (isNew) {
+            UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(save:)];
+            self.navigationItem.rightBarButtonItem = doneItem;
+            
+            UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+            self.navigationItem.leftBarButtonItem = cancelItem;
+        }
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -40,6 +57,10 @@
     self.navigationItem.title = item.itemName;
     
     [self configureNumberKeyboard];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        // проверка устройства
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -78,6 +99,16 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)save:(id)sender {
+    [[self presentingViewController] dismissViewControllerAnimated:true completion:nil];
+}
+
+- (void)cancel:(id)sender {
+    [[ABItemStore sharedInstance] removeItem:item];
+    [[self presentingViewController] dismissViewControllerAnimated:true completion:nil];
 }
 
 
@@ -120,6 +151,9 @@
     [[ABImageStore sharedInstance] setImage:image forKey:item.imageKey];
     
     [self dismissViewControllerAnimated:true completion:nil];
+    
+    _imageView.image = image;
+    _deleteImageButton.hidden = false;
 }
 
 
@@ -148,6 +182,7 @@
 - (IBAction)takePicture:(id)sender {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     imagePicker.allowsEditing = true;
+    imagePicker.modalPresentationStyle = UIModalPresentationPopover;
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -156,6 +191,11 @@
     }
     
     imagePicker.delegate = self;
+    
+    UIPopoverPresentationController *popController = [imagePicker popoverPresentationController];
+    popController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    popController.barButtonItem = sender;
+    popController.delegate = self;
     
     [self presentViewController:imagePicker animated:true completion:nil];
 }

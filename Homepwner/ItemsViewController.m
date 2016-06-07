@@ -88,7 +88,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    DetailViewController *detailViewController = [[DetailViewController alloc] init];
+    DetailViewController *detailViewController = [[DetailViewController alloc] initForNewItem:false];
     
     ABTableItem *item = [[[ABItemStore sharedInstance] allItems] objectAtIndex:indexPath.row];
     detailViewController.item = item;
@@ -132,10 +132,19 @@
     
     ABTableItem *newItem = [[ABItemStore sharedInstance] createItem];
     
+    /*
     int lastRow = [[[ABItemStore sharedInstance] allItems] indexOfObject:newItem];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
     
     [[self tableView] insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+     */
+    
+    DetailViewController *detailViewController = [[DetailViewController alloc] initForNewItem:true];
+    [detailViewController setItem:newItem];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+    
+    [self presentViewController:navController animated:true completion:nil];
 }
 @end
 

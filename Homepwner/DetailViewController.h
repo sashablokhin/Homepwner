@@ -10,8 +10,10 @@
 
 @class ABTableItem;
 
-@interface DetailViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
+@interface DetailViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UIPopoverPresentationControllerDelegate>
 
 @property (nonatomic, strong) ABTableItem *item;
+
+- (id)initForNewItem:(BOOL)isNew;
 
 @end
