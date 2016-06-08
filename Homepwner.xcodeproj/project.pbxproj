@@ -60,10 +60,6 @@
 			children = (
 				AB0F79A81CFD9E5300D41069 /* ABTableItem.h */,
 				AB0F79A91CFD9E5300D41069 /* ABTableItem.m */,
-				AB0F79AB1CFDA1EF00D41069 /* ABItemStore.h */,
-				AB0F79AC1CFDA1EF00D41069 /* ABItemStore.m */,
-				AB0F79B71D055E7D00D41069 /* ABImageStore.h */,
-				AB0F79B81D055E7D00D41069 /* ABImageStore.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -75,6 +71,28 @@
 				AB0F79AF1CFDBF4F00D41069 /* HeaderView.xib */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		AB0F79BA1D082E3C00D41069 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				AB0F79AB1CFDA1EF00D41069 /* ABItemStore.h */,
+				AB0F79AC1CFDA1EF00D41069 /* ABItemStore.m */,
+				AB0F79B71D055E7D00D41069 /* ABImageStore.h */,
+				AB0F79B81D055E7D00D41069 /* ABImageStore.m */,
+			);
+			name = Stores;
+			sourceTree = "<group>";
+		};
+		AB0F79BB1D082E5700D41069 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AB0F79A51CFD9C5F00D41069 /* ItemsViewController.h */,
+				AB0F79A61CFD9C5F00D41069 /* ItemsViewController.m */,
+				AB0F79B21D005C7900D41069 /* DetailViewController.h */,
+				AB0F79B31D005C7900D41069 /* DetailViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		AB30E7B71CFD95A200C985B2 = {
@@ -98,12 +116,10 @@
 			children = (
 				AB30E7C61CFD95A200C985B2 /* AppDelegate.h */,
 				AB30E7C71CFD95A200C985B2 /* AppDelegate.m */,
-				AB0F79A51CFD9C5F00D41069 /* ItemsViewController.h */,
-				AB0F79A61CFD9C5F00D41069 /* ItemsViewController.m */,
-				AB0F79B21D005C7900D41069 /* DetailViewController.h */,
-				AB0F79B31D005C7900D41069 /* DetailViewController.m */,
+				AB0F79BB1D082E5700D41069 /* Controllers */,
 				AB0F79B11CFDC77300D41069 /* Views */,
 				AB0F79AE1CFDA20800D41069 /* Models */,
+				AB0F79BA1D082E3C00D41069 /* Stores */,
 				AB30E7CC1CFD95A200C985B2 /* Main.storyboard */,
 				AB30E7CF1CFD95A200C985B2 /* Assets.xcassets */,
 				AB30E7D11CFD95A200C985B2 /* LaunchScreen.storyboard */,

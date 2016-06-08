@@ -28,8 +28,20 @@
     self = [super init];
     if (self) {
         dictionary = [[NSMutableDictionary alloc] init];
+        
+        // Регистрация в качестве наблюдателя за событием нехватки памяти
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc addObserver:self selector:@selector(clearCache:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     }
     return self;
+}
+
+- (void)clearCache:(NSNotification *)notification {
+    NSLog(@"flushing %d images out of the cache", [dictionary count]);
+    [dictionary removeAllObjects];
+    
+    // Удалятся все изображения кроме отображаемого в DetailViewController так как его держит imageView сильной ссылкой
+    // При необходимости изображения будут снова загружены из файлового хранилища
 }
 
 - (void)setImage:(UIImage *)image forKey:(NSString *)key {
