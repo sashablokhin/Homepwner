@@ -20,10 +20,10 @@
     [super viewDidLoad];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-    
+    /*
     for (int i = 0; i < 5; i++) {
         [[ABItemStore sharedInstance] createItem];
-    }
+    }*/
     
     self.navigationItem.title = @"Homepwner";
     

@@ -28,7 +28,12 @@
 {
     self = [super init];
     if (self) {
-        self.allItems = [[NSMutableArray alloc] init];
+        NSString *path = [self itemArchivePath];
+        self.allItems = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+        
+        if (!self.allItems) {
+            self.allItems = [[NSMutableArray alloc] init];
+        }
     }
     return self;
 }
@@ -55,4 +60,40 @@
     [_allItems insertObject:item atIndex:to];
 }
 
+- (NSString *)itemArchivePath {
+    NSArray *documentsDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true);
+    // Возвращает массив так как в OS X может быть несколько путей, которые соответствуют критериям поиска. Но в iOS может быть только путь. 
+    
+    // Получение из списка только каталога документа
+    NSString *documentDirectory = [documentsDirectories objectAtIndex:0];
+    
+    return [documentDirectory stringByAppendingPathComponent:@"items.archive"];
+}
+
+- (BOOL)saveChanges {
+    NSString *path = [self itemArchivePath];
+    
+    NSLog(@"%@", path);
+    
+    return [NSKeyedArchiver archiveRootObject:_allItems toFile:path];
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

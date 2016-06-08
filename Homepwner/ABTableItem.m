@@ -54,4 +54,42 @@
     return [NSString stringWithFormat:@"%@ - %d $ - %@", _itemName, _valueInDollars, _serialNumber];
 }
 
+// Для архивирования
+// Что бы кодирование стало возможным, объекты должны соответствовать протоколу NSCoding
+
+#pragma mark - NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:_itemName forKey:@"itemName"];
+    [aCoder encodeObject:_serialNumber forKey:@"serialNumber"];
+    [aCoder encodeObject:_dateCreated forKey:@"dateCreated"];
+    [aCoder encodeObject:_imageKey forKey:@"imageKey"];
+    
+    [aCoder encodeInt:_valueInDollars forKey:@"valueInDollars"];
+}
+
+// Объекты загруженные из архива, отсылают сообщение initWithCoder. Этот метод будет захватывать все объекты,
+// которые были закодированы в encodeWithCoder, присваивая их соответствующим переменным экземпляра класса.
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    
+    if (self) {
+        [self setItemName:[aDecoder decodeObjectForKey:@"itemName"]];
+        [self setSerialNumber:[aDecoder decodeObjectForKey:@"serialNumber"]];
+        [self setImageKey:[aDecoder decodeObjectForKey:@"imageKey"]];
+        
+        [self setValueInDollars:[aDecoder decodeIntForKey:@"valueInDollars"]];
+        
+        _dateCreated = [aDecoder decodeObjectForKey:@"dateCreated"];
+    }
+    
+    return self;
+}
+
 @end
+
+
+
+
+

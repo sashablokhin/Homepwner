@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ABTableItem : NSObject
+@interface ABTableItem : NSObject <NSCoding>
 
 @property (nonatomic, strong) ABTableItem *containedItem;
 @property (nonatomic, weak) ABTableItem *container;
