@@ -8,6 +8,7 @@
 
 #import "ABItemStore.h"
 #import "ABTableItem.h"
+#import "ABImageStore.h"
 
 @implementation ABItemStore
 
@@ -46,6 +47,8 @@
 }
 
 - (void)removeItem:(ABTableItem *)item {
+    [[ABImageStore sharedInstance] deleteImageForKey:[item imageKey]];
+    
     [_allItems removeObjectIdenticalTo:item]; // removeObject сравнивает поля, removeObjectIdenticalTo - удаляет именно нужный объект
 }
 
