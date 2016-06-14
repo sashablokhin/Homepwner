@@ -18,6 +18,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //NSLog(@"%@", NSStringFromSelector(_cmd)); // отображается название текущего метода
     return YES;
 }
 

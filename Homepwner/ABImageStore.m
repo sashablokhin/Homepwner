@@ -52,6 +52,7 @@
     
     // Превращение изображения в JPEG данные
     NSData *data = UIImageJPEGRepresentation(image, 0.5);
+    //UIImagePNGRepresentation(image)
     
     // Запись по полному пути
     [data writeToFile:imagePath atomically:true];

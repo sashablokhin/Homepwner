@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DetailViewController.h"
+#include "HomepwnerItemCell.h"
 
 @interface ItemsViewController : UITableViewController
 
