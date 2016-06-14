@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface ABTableItem : NSObject <NSCoding>
 
@@ -18,6 +19,11 @@
 @property (nonatomic, assign) int valueInDollars;
 @property (nonatomic, strong, readonly) NSDate *dateCreated;
 @property (nonatomic, copy) NSString *imageKey;
+
+@property (nonatomic, strong) UIImage *thumbnail;
+@property (nonatomic, strong) NSData *thumbnailData; // так как UImage не подписан на NSCoding, то для архивирования используется NSData
+
+- (void)setThumbnailDataFromImage:(UIImage *)image;
 
 + (ABTableItem *)randomItem;
 

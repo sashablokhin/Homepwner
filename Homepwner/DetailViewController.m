@@ -147,6 +147,7 @@
     //UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
+    [item setThumbnailDataFromImage:image]; // создание миниатюры изображения
     [item setImageKey:[self makeUniqueIDString]];
     [[ABImageStore sharedInstance] setImage:image forKey:item.imageKey];
     
