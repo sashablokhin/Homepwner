@@ -10,7 +10,7 @@
 #import "DetailViewController.h"
 #include "HomepwnerItemCell.h"
 
-@interface ItemsViewController : UITableViewController
+@interface ItemsViewController : UITableViewController <UIPopoverPresentationControllerDelegate>
 
 - (IBAction)toggleEditMode:(id)sender;
 - (IBAction)addNewItem:(id)sender;

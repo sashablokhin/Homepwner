@@ -8,7 +8,9 @@
 
 #import "ItemsViewController.h"
 #import "ABItemStore.h"
+#import "ABImageStore.h"
 #import "ABTableItem.h"
+#import "ImageViewController.h"
 
 @interface ItemsViewController ()
 
@@ -69,6 +71,9 @@
     cell.serialNumberLabel.text = item.serialNumber;
     cell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
     cell.thumbnailView.image = item.thumbnail;
+    
+    cell.controller = self;
+    cell.tableView = tableView;
     
     return cell;
 }
@@ -157,6 +162,44 @@
     
     [self presentViewController:navController animated:true completion:nil];
 }
+
+- (void)showImage:(id)sender atIndexPath:(NSIndexPath *)indexPath {
+
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        
+        ABTableItem *item = [[[ABItemStore sharedInstance] allItems] objectAtIndex:indexPath.row];
+        NSString *imageKey = [item imageKey];
+        
+        // Если изображение остутствует, ничего отображать не нужно
+        UIImage *img = [[ABImageStore sharedInstance] imageForKey:imageKey];
+        
+        if (!img) return;
+        
+        // Создание прямоугольника, который является фреймом для кнопки по отношению к табличному представлению
+        CGRect rect = [self.view convertRect:[sender bounds] fromView:sender];
+        
+        // Создание нового контроллера ImageViewController и установка его изображения
+        
+        ImageViewController *ivc = [[ImageViewController alloc] init];
+        ivc.modalPresentationStyle = UIModalPresentationPopover;
+        
+        [ivc setImage:img];
+        
+        // Представление всплывающего окна 600x600 пикселей на основе прямоугольника
+        [ivc setPreferredContentSize:CGSizeMake(600, 600)];
+        
+        UIPopoverPresentationController *popController = [ivc popoverPresentationController];
+        popController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+        popController.sourceView = self.view;
+        popController.sourceRect = rect;
+        
+        popController.delegate = self;
+        
+        [self presentViewController:ivc animated:true completion:nil];
+    }
+
+}
+
 @end
 
 

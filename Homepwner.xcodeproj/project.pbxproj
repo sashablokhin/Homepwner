@@ -16,6 +16,8 @@
 		AB0F79B91D055E7D00D41069 /* ABImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0F79B81D055E7D00D41069 /* ABImageStore.m */; };
 		AB0F79BF1D0FFFD800D41069 /* HomepwnerItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0F79BD1D0FFFD800D41069 /* HomepwnerItemCell.m */; };
 		AB0F79C01D0FFFD800D41069 /* HomepwnerItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0F79BE1D0FFFD800D41069 /* HomepwnerItemCell.xib */; };
+		AB0F79C41D10277800D41069 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0F79C21D10277800D41069 /* ImageViewController.m */; };
+		AB0F79C51D10277800D41069 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0F79C31D10277800D41069 /* ImageViewController.xib */; };
 		AB30E7C51CFD95A200C985B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB30E7C41CFD95A200C985B2 /* main.m */; };
 		AB30E7C81CFD95A200C985B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB30E7C71CFD95A200C985B2 /* AppDelegate.m */; };
 		AB30E7CE1CFD95A200C985B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB30E7CC1CFD95A200C985B2 /* Main.storyboard */; };
@@ -39,6 +41,9 @@
 		AB0F79BC1D0FFFD800D41069 /* HomepwnerItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepwnerItemCell.h; sourceTree = "<group>"; };
 		AB0F79BD1D0FFFD800D41069 /* HomepwnerItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepwnerItemCell.m; sourceTree = "<group>"; };
 		AB0F79BE1D0FFFD800D41069 /* HomepwnerItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomepwnerItemCell.xib; sourceTree = "<group>"; };
+		AB0F79C11D10277800D41069 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		AB0F79C21D10277800D41069 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		AB0F79C31D10277800D41069 /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
 		AB30E7C01CFD95A200C985B2 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB30E7C41CFD95A200C985B2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AB30E7C61CFD95A200C985B2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -72,8 +77,9 @@
 		AB0F79B11CFDC77300D41069 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AB0F79B41D005C7900D41069 /* DetailViewController.xib */,
 				AB0F79AF1CFDBF4F00D41069 /* HeaderView.xib */,
+				AB0F79B41D005C7900D41069 /* DetailViewController.xib */,
+				AB0F79C31D10277800D41069 /* ImageViewController.xib */,
 				AB0F79BE1D0FFFD800D41069 /* HomepwnerItemCell.xib */,
 				AB0F79BC1D0FFFD800D41069 /* HomepwnerItemCell.h */,
 				AB0F79BD1D0FFFD800D41069 /* HomepwnerItemCell.m */,
@@ -99,6 +105,8 @@
 				AB0F79A61CFD9C5F00D41069 /* ItemsViewController.m */,
 				AB0F79B21D005C7900D41069 /* DetailViewController.h */,
 				AB0F79B31D005C7900D41069 /* DetailViewController.m */,
+				AB0F79C11D10277800D41069 /* ImageViewController.h */,
+				AB0F79C21D10277800D41069 /* ImageViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -206,6 +214,7 @@
 				AB30E7D01CFD95A200C985B2 /* Assets.xcassets in Resources */,
 				AB0F79B61D005C7900D41069 /* DetailViewController.xib in Resources */,
 				AB30E7CE1CFD95A200C985B2 /* Main.storyboard in Resources */,
+				AB0F79C51D10277800D41069 /* ImageViewController.xib in Resources */,
 				AB0F79C01D0FFFD800D41069 /* HomepwnerItemCell.xib in Resources */,
 				AB0F79B01CFDBF4F00D41069 /* HeaderView.xib in Resources */,
 			);
@@ -224,6 +233,7 @@
 				AB0F79AD1CFDA1EF00D41069 /* ABItemStore.m in Sources */,
 				AB30E7C81CFD95A200C985B2 /* AppDelegate.m in Sources */,
 				AB0F79B91D055E7D00D41069 /* ABImageStore.m in Sources */,
+				AB0F79C41D10277800D41069 /* ImageViewController.m in Sources */,
 				AB30E7C51CFD95A200C985B2 /* main.m in Sources */,
 				AB0F79B51D005C7900D41069 /* DetailViewController.m in Sources */,
 			);

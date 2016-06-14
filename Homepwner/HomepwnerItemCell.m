@@ -20,4 +20,21 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)showImage:(id)sender {
+    // Получение этого имени для данного метода, "showImage:"
+    NSString *selector = NSStringFromSelector(_cmd);
+    
+    // Теперь селектор - это "showImage:atIndexPath:"
+    selector = [selector stringByAppendingString:@"atIndexPath:"];
+    
+    // Подготовка селектора для данной строки
+    SEL newSelector = NSSelectorFromString(selector);
+    NSIndexPath *indexPath = [[self tableView] indexPathForCell:self];
+    
+    if (indexPath) {
+        if ([[self controller] respondsToSelector:newSelector]) {
+            [[self controller] performSelector:newSelector withObject:sender withObject:indexPath];
+        }
+    }
+}
 @end
