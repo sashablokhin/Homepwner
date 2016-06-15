@@ -18,6 +18,8 @@
 		AB0F79C01D0FFFD800D41069 /* HomepwnerItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0F79BE1D0FFFD800D41069 /* HomepwnerItemCell.xib */; };
 		AB0F79C41D10277800D41069 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0F79C21D10277800D41069 /* ImageViewController.m */; };
 		AB0F79C51D10277800D41069 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0F79C31D10277800D41069 /* ImageViewController.xib */; };
+		AB0F79C71D11378E00D41069 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB0F79C61D11378E00D41069 /* CoreData.framework */; };
+		AB0F79CA1D1138A200D41069 /* Homepwner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB0F79C81D1138A200D41069 /* Homepwner.xcdatamodeld */; };
 		AB30E7C51CFD95A200C985B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB30E7C41CFD95A200C985B2 /* main.m */; };
 		AB30E7C81CFD95A200C985B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB30E7C71CFD95A200C985B2 /* AppDelegate.m */; };
 		AB30E7CE1CFD95A200C985B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB30E7CC1CFD95A200C985B2 /* Main.storyboard */; };
@@ -44,6 +46,8 @@
 		AB0F79C11D10277800D41069 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		AB0F79C21D10277800D41069 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		AB0F79C31D10277800D41069 /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
+		AB0F79C61D11378E00D41069 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		AB0F79C91D1138A200D41069 /* Homepwner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Homepwner.xcdatamodel; sourceTree = "<group>"; };
 		AB30E7C01CFD95A200C985B2 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB30E7C41CFD95A200C985B2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AB30E7C61CFD95A200C985B2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -59,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB0F79C71D11378E00D41069 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +75,7 @@
 			children = (
 				AB0F79A81CFD9E5300D41069 /* ABTableItem.h */,
 				AB0F79A91CFD9E5300D41069 /* ABTableItem.m */,
+				AB0F79C81D1138A200D41069 /* Homepwner.xcdatamodeld */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -114,6 +120,7 @@
 		AB30E7B71CFD95A200C985B2 = {
 			isa = PBXGroup;
 			children = (
+				AB0F79C61D11378E00D41069 /* CoreData.framework */,
 				AB30E7C21CFD95A200C985B2 /* Homepwner */,
 				AB30E7C11CFD95A200C985B2 /* Products */,
 			);
@@ -236,6 +243,7 @@
 				AB0F79C41D10277800D41069 /* ImageViewController.m in Sources */,
 				AB30E7C51CFD95A200C985B2 /* main.m in Sources */,
 				AB0F79B51D005C7900D41069 /* DetailViewController.m in Sources */,
+				AB0F79CA1D1138A200D41069 /* Homepwner.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +395,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AB0F79C81D1138A200D41069 /* Homepwner.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AB0F79C91D1138A200D41069 /* Homepwner.xcdatamodel */,
+			);
+			currentVersion = AB0F79C91D1138A200D41069 /* Homepwner.xcdatamodel */;
+			path = Homepwner.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AB30E7B81CFD95A200C985B2 /* Project object */;
 }
