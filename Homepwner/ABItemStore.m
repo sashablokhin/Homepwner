@@ -104,6 +104,30 @@
     
     [_allItems removeObjectAtIndex:from];
     [_allItems insertObject:item atIndex:to];
+    
+    // Вычисление нового значения orderValue для перемещенного объекта
+    double lowerBound = 0.0;
+    
+    if (to > 0) {
+        lowerBound = [[self.allItems objectAtIndex:to - 1] orderingValue];
+    } else {
+        lowerBound = [[self.allItems objectAtIndex:1] orderingValue] - 2.0;
+    }
+    
+    double upperBound = 0.0;
+    
+    // Имеется ли в массиве последующий объект?
+    
+    if (to < self.allItems.count - 1) {
+        upperBound = [[self.allItems objectAtIndex:to + 1] orderingValue];
+    } else {
+        upperBound = [[self.allItems objectAtIndex:to - 1] orderingValue] + 2.0;
+    }
+    
+    double newOrderValue = (lowerBound + upperBound) / 2.0;
+    
+    NSLog(@"Moving to order %f", newOrderValue);
+    item.orderingValue = newOrderValue;
 }
 
 /*
