@@ -67,7 +67,21 @@
 
 
 - (ABItem *)createItem {
-    ABItem *item = [[ABItem alloc] init];//[ABItem randomItem];
+    //ABItem *item = [[ABItem alloc] init];//[ABItem randomItem];
+    
+    double order;
+    
+    if (self.allItems.count == 0) {
+        order = 1.0;
+    } else {
+        order = [[self.allItems lastObject] orderingValue] + 1.0;
+    }
+    
+    NSLog(@"Adding after %lu items, order = %.2f", (unsigned long)self.allItems.count, order);
+    
+    ABItem *item = [NSEntityDescription insertNewObjectForEntityForName:@"ABItem" inManagedObjectContext:self.context];
+    item.orderingValue = order;
+    
     [_allItems addObject:item];
     
     return item;
@@ -75,6 +89,8 @@
 
 - (void)removeItem:(ABItem *)item {
     [[ABImageStore sharedInstance] deleteImageForKey:[item imageKey]];
+    
+    [self.context deleteObject:item];
     
     [_allItems removeObjectIdenticalTo:item]; // removeObject сравнивает поля, removeObjectIdenticalTo - удаляет именно нужный объект
 }
@@ -142,6 +158,28 @@
 }
 
 - (void)loadAllItems {
+    
+    if (!self.allItems) {
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        
+        NSEntityDescription *entityDesc = [[self.model entitiesByName] objectForKey:@"ABItem"];
+        request.entity = entityDesc;
+        
+        NSSortDescriptor *sortDesc = [NSSortDescriptor sortDescriptorWithKey:@"orderingValue" ascending:true];
+        request.sortDescriptors = @[sortDesc];
+        
+        NSError *error;
+        NSArray *result = [self.context executeFetchRequest:request error:&error];
+        
+        if (!result) {
+            [NSException raise:@"Fetch failed" format:@"Reason: %@", error.localizedDescription ];
+        }
+        
+        self.allItems = [[NSMutableArray alloc] initWithArray:result];
+        
+        // Для выборки используется предикат
+        // request.predicate = [NSPredicate predicateWithFormat:@"valueInDollars > 50"];
+    }
     
 }
 
