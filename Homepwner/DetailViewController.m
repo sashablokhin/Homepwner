@@ -7,7 +7,8 @@
 //
 
 #import "DetailViewController.h"
-#import "ABTableItem.h"
+//#import "ABTableItem.h"
+#import "ABItem.h"
 #import "ABImageStore.h"
 #import "ABItemStore.h"
 
@@ -74,7 +75,9 @@
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
     [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
     
-    _dateLabel.text = [dateFormatter stringFromDate:item.dateCreated];
+    //_dateLabel.text = [dateFormatter stringFromDate:item.dateCreated];
+    NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:item.dateCreated];
+    _dateLabel.text = [dateFormatter stringFromDate:date];
     
     if (item.imageKey) {
         UIImage *imageToDisplay = [[ABImageStore sharedInstance] imageForKey:item.imageKey];

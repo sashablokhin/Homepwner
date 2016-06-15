@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class ABTableItem;
+//@class ABTableItem;
+@class ABItem;
 
 @interface DetailViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UIPopoverPresentationControllerDelegate>
 
-@property (nonatomic, strong) ABTableItem *item;
+//@property (nonatomic, strong) ABTableItem *item;
+@property (nonatomic, strong) ABItem *item;
 @property (nonatomic, copy) void (^dismissBlock)(void);
 
 - (id)initForNewItem:(BOOL)isNew;

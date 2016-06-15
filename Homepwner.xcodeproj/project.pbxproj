@@ -20,6 +20,8 @@
 		AB0F79C51D10277800D41069 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0F79C31D10277800D41069 /* ImageViewController.xib */; };
 		AB0F79C71D11378E00D41069 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB0F79C61D11378E00D41069 /* CoreData.framework */; };
 		AB0F79CA1D1138A200D41069 /* Homepwner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB0F79C81D1138A200D41069 /* Homepwner.xcdatamodeld */; };
+		AB0F79CF1D1140A300D41069 /* ABItem+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0F79CC1D1140A300D41069 /* ABItem+CoreDataProperties.m */; };
+		AB0F79D01D1140A300D41069 /* ABItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0F79CE1D1140A300D41069 /* ABItem.m */; };
 		AB30E7C51CFD95A200C985B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB30E7C41CFD95A200C985B2 /* main.m */; };
 		AB30E7C81CFD95A200C985B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB30E7C71CFD95A200C985B2 /* AppDelegate.m */; };
 		AB30E7CE1CFD95A200C985B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB30E7CC1CFD95A200C985B2 /* Main.storyboard */; };
@@ -48,6 +50,10 @@
 		AB0F79C31D10277800D41069 /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
 		AB0F79C61D11378E00D41069 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		AB0F79C91D1138A200D41069 /* Homepwner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Homepwner.xcdatamodel; sourceTree = "<group>"; };
+		AB0F79CB1D1140A300D41069 /* ABItem+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ABItem+CoreDataProperties.h"; sourceTree = "<group>"; };
+		AB0F79CC1D1140A300D41069 /* ABItem+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ABItem+CoreDataProperties.m"; sourceTree = "<group>"; };
+		AB0F79CD1D1140A300D41069 /* ABItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABItem.h; sourceTree = "<group>"; };
+		AB0F79CE1D1140A300D41069 /* ABItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABItem.m; sourceTree = "<group>"; };
 		AB30E7C01CFD95A200C985B2 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB30E7C41CFD95A200C985B2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AB30E7C61CFD95A200C985B2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -76,6 +82,10 @@
 				AB0F79A81CFD9E5300D41069 /* ABTableItem.h */,
 				AB0F79A91CFD9E5300D41069 /* ABTableItem.m */,
 				AB0F79C81D1138A200D41069 /* Homepwner.xcdatamodeld */,
+				AB0F79CB1D1140A300D41069 /* ABItem+CoreDataProperties.h */,
+				AB0F79CC1D1140A300D41069 /* ABItem+CoreDataProperties.m */,
+				AB0F79CD1D1140A300D41069 /* ABItem.h */,
+				AB0F79CE1D1140A300D41069 /* ABItem.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -242,6 +252,8 @@
 				AB0F79B91D055E7D00D41069 /* ABImageStore.m in Sources */,
 				AB0F79C41D10277800D41069 /* ImageViewController.m in Sources */,
 				AB30E7C51CFD95A200C985B2 /* main.m in Sources */,
+				AB0F79CF1D1140A300D41069 /* ABItem+CoreDataProperties.m in Sources */,
+				AB0F79D01D1140A300D41069 /* ABItem.m in Sources */,
 				AB0F79B51D005C7900D41069 /* DetailViewController.m in Sources */,
 				AB0F79CA1D1138A200D41069 /* Homepwner.xcdatamodeld in Sources */,
 			);

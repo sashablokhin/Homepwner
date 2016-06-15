@@ -7,22 +7,32 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@class ABTableItem; // директива class существенно ускоряет время компиляции
+//@class ABTableItem; // директива class существенно ускоряет время компиляции
+@class ABItem;
 
 @interface ABItemStore : NSObject
 
-@property NSMutableArray *allItems;
+@property (nonatomic, strong) NSMutableArray *allItems;
+@property (nonatomic, strong) NSMutableArray *allAssetTypes;
+@property (nonatomic, strong) NSManagedObjectContext *context;
+@property (nonatomic, strong) NSManagedObjectModel *model;
 
 + (ABItemStore *)sharedInstance;
 
+/*
 - (ABTableItem *)createItem;
 - (void)removeItem:(ABTableItem *)item;
+ */
+- (ABItem *)createItem;
+- (void)removeItem:(ABItem *)item;
 - (void)moveItemAtIndex:(int)from toIndex:(int)to;
 
 - (NSString *)itemArchivePath;
 
 - (BOOL)saveChanges;
+- (void)loadAllItems;
 
 @end
 

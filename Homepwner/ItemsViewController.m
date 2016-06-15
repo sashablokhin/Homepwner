@@ -9,7 +9,8 @@
 #import "ItemsViewController.h"
 #import "ABItemStore.h"
 #import "ABImageStore.h"
-#import "ABTableItem.h"
+//#import "ABTableItem.h"
+#import "ABItem.h"
 #import "ImageViewController.h"
 
 @interface ItemsViewController ()
@@ -65,7 +66,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomepwnerItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomepwnerItemCell" forIndexPath:indexPath];
   
-    ABTableItem *item = [[[ABItemStore sharedInstance] allItems] objectAtIndex:indexPath.row];
+    //ABTableItem *item = [[[ABItemStore sharedInstance] allItems] objectAtIndex:indexPath.row];
+    ABItem *item = [[[ABItemStore sharedInstance] allItems] objectAtIndex:indexPath.row];
     
     cell.nameLabel.text = item.itemName;
     cell.serialNumberLabel.text = item.serialNumber;
@@ -101,7 +103,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     DetailViewController *detailViewController = [[DetailViewController alloc] initForNewItem:false];
     
-    ABTableItem *item = [[[ABItemStore sharedInstance] allItems] objectAtIndex:indexPath.row];
+    //ABTableItem *item = [[[ABItemStore sharedInstance] allItems] objectAtIndex:indexPath.row];
+    ABItem *item = [[[ABItemStore sharedInstance] allItems] objectAtIndex:indexPath.row];
     detailViewController.item = item;
     
     [self.navigationController pushViewController:detailViewController animated:true];
@@ -141,7 +144,8 @@
 
 - (IBAction)addNewItem:(id)sender {
     
-    ABTableItem *newItem = [[ABItemStore sharedInstance] createItem];
+    //ABTableItem *newItem = [[ABItemStore sharedInstance] createItem];
+    ABItem *newItem = [[ABItemStore sharedInstance] createItem];
     
     /*
     int lastRow = [[[ABItemStore sharedInstance] allItems] indexOfObject:newItem];
@@ -167,7 +171,8 @@
 
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         
-        ABTableItem *item = [[[ABItemStore sharedInstance] allItems] objectAtIndex:indexPath.row];
+        //ABTableItem *item = [[[ABItemStore sharedInstance] allItems] objectAtIndex:indexPath.row];
+        ABItem *item = [[[ABItemStore sharedInstance] allItems] objectAtIndex:indexPath.row];
         NSString *imageKey = [item imageKey];
         
         // Если изображение остутствует, ничего отображать не нужно
