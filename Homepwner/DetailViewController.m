@@ -11,6 +11,7 @@
 #import "ABItem.h"
 #import "ABImageStore.h"
 #import "ABItemStore.h"
+#import "AssetTypeViewController.h"
 
 @interface DetailViewController ()
 
@@ -20,9 +21,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *deleteImageButton;
+@property (weak, nonatomic) IBOutlet UIButton *assetTypeButton;
+
 
 - (IBAction)takePicture:(id)sender;
 - (IBAction)deleteImageButtonPressed:(id)sender;
+- (IBAction)showAssetTypePicker:(id)sender;
 
 
 @end
@@ -87,6 +91,13 @@
         _imageView.image = nil;
         _deleteImageButton.hidden = true;
     }
+    
+    NSString *typeLabel = [[item assetType] valueForKey:@"label"];
+    if (!typeLabel)
+        typeLabel = @"None";
+
+    [_assetTypeButton setTitle:[NSString stringWithFormat:@"Type: %@", typeLabel] forState:UIControlStateNormal];
+    [_assetTypeButton sizeToFit];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -213,4 +224,28 @@
     }
 }
 
+- (IBAction)showAssetTypePicker:(id)sender {
+    [self.view endEditing:true];
+    
+    AssetTypeViewController *assetTypeViewController = [[AssetTypeViewController alloc] init];
+    [assetTypeViewController setItem:item];
+    
+    [self.navigationController pushViewController:assetTypeViewController animated:true];
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

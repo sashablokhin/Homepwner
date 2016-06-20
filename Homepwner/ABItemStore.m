@@ -207,6 +207,46 @@
     
 }
 
+
+- (NSArray *)allAssetTypes {
+    if (!_allAssetTypes) {
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        
+        NSEntityDescription *entityDecr = [[_model entitiesByName] objectForKey:@"ABAssetType"];
+        
+        [request setEntity:entityDecr];
+        
+        NSError *error;
+        NSArray *result = [_context executeFetchRequest:request error:&error];
+        
+        if (!result) {
+            [NSException raise:@"Fetch failed" format:@"Reason: %@", error.localizedDescription];
+        }
+        
+        _allAssetTypes = [result mutableCopy];
+    }
+    
+    // Программа запускается первый раз?
+    if (_allAssetTypes.count == 0) {
+        NSManagedObject *type;
+        
+        type = [NSEntityDescription insertNewObjectForEntityForName:@"ABAssetType" inManagedObjectContext:_context];
+        [type setValue:@"Furniture" forKey:@"label"];
+        [_allAssetTypes addObject:type];
+        
+        type = [NSEntityDescription insertNewObjectForEntityForName:@"ABAssetType" inManagedObjectContext:_context];
+        [type setValue:@"Jewelry" forKey:@"label"];
+        [_allAssetTypes addObject:type];
+        
+        type = [NSEntityDescription insertNewObjectForEntityForName:@"ABAssetType" inManagedObjectContext:_context];
+        [type setValue:@"Electronics" forKey:@"label"];
+        [_allAssetTypes addObject:type];
+    }
+    
+    return _allAssetTypes;
+}
+
+
 @end
 
 

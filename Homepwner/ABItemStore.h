@@ -34,6 +34,8 @@
 - (BOOL)saveChanges;
 - (void)loadAllItems;
 
+- (NSArray *)allAssetTypes;
+
 @end
 
 /* ---------- Песочница приложения ----------

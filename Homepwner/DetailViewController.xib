@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController">
             <connections>
+                <outlet property="assetTypeButton" destination="CP8-ZR-alY" id="zgZ-If-3iP"/>
                 <outlet property="dateLabel" destination="slt-rb-rJe" id="bUS-u2-JP6"/>
                 <outlet property="deleteImageButton" destination="jh3-Md-LXU" id="eRd-Lh-98O"/>
                 <outlet property="imageView" destination="gVw-zD-Zvl" id="7Ek-eA-FLB"/>
@@ -95,6 +96,18 @@
                                 <action selector="takePicture:" destination="-1" id="UXW-05-CHi"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="JEa-qu-Oi7"/>
+                        <barButtonItem style="plain" id="m1w-Px-O7u">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CP8-ZR-alY">
+                                <rect key="frame" x="120" y="7" width="80" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Asset Type "/>
+                                <connections>
+                                    <action selector="showAssetTypePicker:" destination="-1" eventType="touchUpInside" id="VkG-YJ-0en"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="utX-LG-5Of"/>
                     </items>
                 </toolbar>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jh3-Md-LXU">
