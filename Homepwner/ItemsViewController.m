@@ -71,8 +71,11 @@
     
     cell.nameLabel.text = item.itemName;
     cell.serialNumberLabel.text = item.serialNumber;
-    cell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
     cell.thumbnailView.image = item.thumbnail;
+    
+    // cell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
+    NSString *currencySymbol = [[NSLocale currentLocale] objectForKey:NSLocaleCurrencySymbol];
+    cell.valueLabel.text = [NSString stringWithFormat:@"%@%d", currencySymbol, item.valueInDollars];
     
     cell.controller = self;
     cell.tableView = tableView;
